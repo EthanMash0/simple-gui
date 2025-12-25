@@ -1,8 +1,8 @@
 #define _GNU_SOURCE
 #include "hypr.h"
 #include "jsmn.h"
-#include <glib-2.0/glib.h>
 #include <stdio.h>
+#include <glib.h>
 #include <string.h>
 
 static char* read_cmd_all(const char *cmd) {

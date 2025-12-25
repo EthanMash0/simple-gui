@@ -1,19 +1,4 @@
 #include "config.h"
-#include <gtk-4.0/gtk/gtk.h>
-#include <glib-2.0/glib.h>
-
-gchar* dock_user_config_path(const char *name) {
-	const char *xdg = g_get_user_config_dir();
-	return g_build_filename(xdg, "hyprdock", name, NULL);
-}
-
-gchar* dock_find_config_path(const char *name) {
-	gchar *user = dock_user_config_path(name);
-	if (g_file_test(user, G_FILE_TEST_EXISTS)) return user;
-
-	g_free(user);
-	return g_build_filename("/usr/share/hyprdock", name, NULL);
-}
 
 static gchar** split_csv_trim(const gchar *s) {
 	if (!s || !*s) return NULL;
@@ -34,6 +19,26 @@ static gchar** split_csv_trim(const gchar *s) {
 	}
 
 	return v;
+}
+
+static gchar* dock_user_config_path(const char *name) {
+	const char *xdg = g_get_user_config_dir();
+	return g_build_filename(xdg, "hyprdock", name, NULL);
+}
+
+gchar* dock_find_config_path(const char *name) {
+    gchar *user = dock_user_config_path(name);
+    if (g_file_test(user, G_FILE_TEST_EXISTS)) return user;
+
+    gchar *sys = g_build_filename("/usr/share/hyprdock", name, NULL);
+    if (g_file_test(sys, G_FILE_TEST_EXISTS)) {
+        g_free(user);
+        return sys;
+    }
+
+    // neither exists yet: prefer user path (useful for watchers)
+    g_free(sys);
+    return user;
 }
 
 DockConfig* dock_config_load(void) {
@@ -71,20 +76,23 @@ void dock_config_free(DockConfig *cfg) {
 }
 
 GtkCssProvider* dock_css_provider_create_and_attach(void) {
-	GtkCssProvider *prov = gtk_css_provider_new();
-	dock_css_provider_reload(prov);
+    GtkCssProvider *prov = gtk_css_provider_new();
+    dock_css_provider_reload(prov);
 
-	gtk_style_context_add_provider_for_display(
-		gdk_display_get_default(),
-		GTK_STYLE_PROVIDER(prov),
-		GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
-	);
-	return prov;
+    GdkDisplay *dpy = gdk_display_get_default();
+    if (dpy) {
+        gtk_style_context_add_provider_for_display(
+            dpy,
+            GTK_STYLE_PROVIDER(prov),
+            GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
+    }
+    return prov;
 }
 
 gboolean dock_css_provider_reload(GtkCssProvider *prov) {
-	// gchar *path = dock_find_config_path("style.css");
-	gchar *path = dock_user_config_path("style.css");
+	gchar *path = dock_find_config_path("style.css");
+	// gchar *path = dock_user_config_path("style.css");
 	gboolean ok = g_file_test(path, G_FILE_TEST_EXISTS);
 	if (!ok) {
 		g_warning("CSS not found: %s", path);
