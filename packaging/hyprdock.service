@@ -8,4 +8,4 @@ ExecStart=/usr/bin/hyprdock
 Restart=on-failure
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=hyprland-session.target

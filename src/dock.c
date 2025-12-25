@@ -40,7 +40,9 @@ static GtkWidget* make_dot(void) {
     gtk_widget_set_size_request(d, 5, 9);
     gtk_widget_set_halign(d, GTK_ALIGN_CENTER);
     gtk_widget_set_valign(d, GTK_ALIGN_END);
-    gtk_widget_set_visible(d, FALSE);
+    // gtk_widget_set_visible(d, FALSE);
+
+		gtk_widget_set_opacity(d, 0.0);
     return d;
 }
 
@@ -116,7 +118,8 @@ gboolean dock_refresh_running(gpointer user_data) {
         DockItem *it = g_ptr_array_index(st->items, i);
         gpointer v = g_hash_table_lookup(counts, it->match_key);
         int c = v ? GPOINTER_TO_INT(v) : 0;
-        gtk_widget_set_visible(it->dot, (c > 0));
+        // gtk_widget_set_visible(it->dot, (c > 0));
+				gtk_widget_set_opacity(it->dot, (c > 0) ? 1.0 : 0.0);
     }
 
     g_hash_table_destroy(counts);
