@@ -1,5 +1,5 @@
 pkgname=hyprdock-git
-pkgver=1f2374e
+pkgver=e4ba030
 pkgrel=1
 pkgdesc="Bottom dock for Hyprland (GTK4 layer-shell)"
 arch=(x86_64)

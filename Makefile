@@ -36,8 +36,8 @@ install: $(BIN)
 	# install -Dm644 packaging/hyprdock.desktop "$(DESTDIR)$(APPDIR)/hyprdock.desktop"
 	# install -Dm644 packaging/hyprdock.png "$(DESTDIR)$(ICONDIR)/hyprdock.png"
 	# install -Dm644 packaging/hyprdock.service "$(DESTDIR)$(SYSTEMDUSERDIR)/hyprdock.service"
-	install -Dm644 "$(TOPDIR)/config.ini" "$(DESTDIR)$(DATADIR)/config.ini"
-	install -Dm644 "$(TOPDIR)/style.css"  "$(DESTDIR)$(DATADIR)/style.css"
+	install -Dm644 "$(TOPDIR)/data/config.ini" "$(DESTDIR)$(DATADIR)/config.ini"
+	install -Dm644 "$(TOPDIR)/data/style.css"  "$(DESTDIR)$(DATADIR)/style.css"
 	install -Dm644 "$(TOPDIR)/packaging/hyprdock.desktop" "$(DESTDIR)$(APPDIR)/hyprdock.desktop"
 	install -Dm644 "$(TOPDIR)/packaging/hyprdock.service" "$(DESTDIR)$(SYSTEMDUSERDIR)/hyprdock.service"
 
