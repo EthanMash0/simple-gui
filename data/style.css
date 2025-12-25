@@ -1,21 +1,38 @@
-*{
-
+.dock-window {
+	background: transparent;
 }
 .dock {
+  padding: 19px 14px 4px 14px;
+  margin: 0px 0px 4px 0px;
+  border-radius: 22px;
 
+  background: rgba(24, 24, 24, 0.9);
+	/* background: rgb(255, 255, 255); */
 }
-.icon {
 
-}
 .indicator {
-
+	min-width: 5px;
+	min-height: 5px;
+	border-radius: 999px;
+	background: rgba(238, 238, 238, 0.5);
+	border: none;
+	margin: 5px 0px 0px 0px;
 }
-.icon.active {
 
+button.icon {
+  padding: 0px 8px;
+  border-radius: 14px;
+
+  background: transparent;
+  border: 0px;
 }
-.icon:hover {
 
+button.icon:hover {
+  border-radius: 14px;
+  /* background: rgba(238, 238, 238, 0.10); */
 }
-.icon.selected {
 
+button.icon:active {
+  border-radius: 14px;
+  /* background: rgba(238, 238, 238, 0.10); */
 }

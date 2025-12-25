@@ -1,0 +1,11 @@
+[Unit]
+Description=Hyprdock
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/hyprdock
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

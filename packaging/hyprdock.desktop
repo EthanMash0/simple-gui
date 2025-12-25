@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Hyprdock
+Exec=hyprdock
+Icon=hyprdock
+Terminal=false
+Categories=Utility;
