@@ -6,6 +6,7 @@
 typedef struct {
 	gchar **pinned_apps;
 	int icon_size;
+	int searcher_icon_size;
 } DockConfig;
 
 

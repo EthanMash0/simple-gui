@@ -5,3 +5,4 @@ Exec=simple-gui
 Icon=simple-gui
 Terminal=false
 Categories=Utility;
+NoDisplay=true

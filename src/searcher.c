@@ -84,6 +84,7 @@ void searcher_init(AppState *st) {
     gtk_layer_set_anchor(GTK_WINDOW(win), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
 
     GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 20);
+		gtk_widget_add_css_class(box, "search-container");
     gtk_widget_set_halign(box, GTK_ALIGN_CENTER);
     gtk_widget_set_valign(box, GTK_ALIGN_CENTER);
     gtk_widget_set_size_request(box, 600, 400);
@@ -99,6 +100,8 @@ void searcher_init(AppState *st) {
     GtkWidget *flow = gtk_flow_box_new();
     gtk_flow_box_set_selection_mode(GTK_FLOW_BOX(flow), GTK_SELECTION_NONE);
     gtk_flow_box_set_max_children_per_line(GTK_FLOW_BOX(flow), 5);
+		gtk_widget_set_halign(flow, GTK_ALIGN_CENTER);
+		gtk_widget_set_valign(flow, GTK_ALIGN_START);
     gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scroll), flow);
 
     GList *apps = g_app_info_get_all();
@@ -107,11 +110,16 @@ void searcher_init(AppState *st) {
         if (!g_app_info_should_show(info)) continue;
 
         GtkWidget *btn = gtk_button_new();
+				gtk_widget_add_css_class(btn, "app-btn");
+				gtk_widget_set_halign(btn, GTK_ALIGN_CENTER);
+				gtk_widget_set_valign(btn, GTK_ALIGN_CENTER);
         GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+				gtk_widget_set_halign(vbox, GTK_ALIGN_CENTER);
+				gtk_widget_set_valign(vbox, GTK_ALIGN_END);
         GIcon *icon = g_app_info_get_icon(info);
         
         GtkWidget *img = gtk_image_new_from_gicon(icon);
-        gtk_image_set_pixel_size(GTK_IMAGE(img), 48);
+        gtk_image_set_pixel_size(GTK_IMAGE(img), st->cfg->searcher_icon_size);
         GtkWidget *lbl = gtk_label_new(g_app_info_get_name(info));
         gtk_label_set_wrap(GTK_LABEL(lbl), TRUE);
         gtk_label_set_max_width_chars(GTK_LABEL(lbl), 12);

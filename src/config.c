@@ -44,6 +44,7 @@ gchar* dock_find_config_path(const char *name) {
 DockConfig* dock_config_load(void) {
 	DockConfig *cfg = g_new0(DockConfig, 1);
 	cfg->icon_size = 32;
+	cfg->searcher_icon_size = 64;
 
 	GKeyFile *kf = g_key_file_new();
 	gchar *path = dock_find_config_path("config.ini");
@@ -59,6 +60,12 @@ DockConfig* dock_config_load(void) {
 	GError *err = NULL;
 	int icon_size = g_key_file_get_integer(kf, "dock", "icon_size", &err);
 	if (!err && icon_size > 0 && icon_size <= 256) cfg->icon_size = icon_size;
+	if (err) g_error_free(err);
+
+	int s_size = g_key_file_get_integer(kf, "searcher", "icon_size", &err);
+	if (!err && s_size > 0 && s_size <= 512) {
+		cfg->searcher_icon_size = s_size;
+	}
 	if (err) g_error_free(err);
 
 	gchar *apps = g_key_file_get_string(kf, "pinned", "apps", NULL);
