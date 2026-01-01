@@ -1,10 +1,10 @@
 [Unit]
-Description=app-dock-hyprland
+Description=simple-gui
 After=graphical-session.target
 PartOf=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/app-dock-hyprland
+ExecStart=/usr/bin/simple-gui
 Restart=on-failure
 
 [Install]

@@ -3,11 +3,24 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <glib-object.h>
+#include <glib-unix.h>
+#include <signal.h>
 
 #include "state.h"
 #include "dock.h"
 #include "hypr_events.h"
 #include "watch.h" // watch_user_file, on_style_file_changed, on_config_file_changed
+#include "searcher.h"
+
+/* App Searcher */
+
+static gboolean on_sigusr1(gpointer user_data) {
+	AppState *st = (AppState *)user_data;
+	searcher_toggle(st);
+	return G_SOURCE_CONTINUE;
+}
+
+/* App Dock */
 
 static void force_window_full_width(GtkWindow *win) {
     GdkDisplay *dpy = gdk_display_get_default();
@@ -67,6 +80,12 @@ static void on_activate(GtkApplication *app, gpointer user_data) {
 
     // Build dock UI from current config/state
     dock_init(st);
+		
+		// Initialize searcher
+		searcher_init(st);
+
+		// Listen for SIGUSR1 to toggle searcher
+		g_unix_signal_add(SIGUSR1, on_sigusr1, st);
 
     // Live reload (these should be updated to accept/pass st as user_data)
     watch_user_file("style.css",  G_CALLBACK(on_style_file_changed),  st);

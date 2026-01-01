@@ -36,3 +36,23 @@ button.icon:active {
   border-radius: 14px;
   /* background: rgba(238, 238, 238, 0.10); */
 }
+
+.search-window {
+	background-color: transparent;
+}
+
+.search-window box {
+	background: #222;
+	border-radius: 12px;
+	padding: 20px;
+	border: 2px solid #444;
+}
+
+.search-window entry {
+	min-height: 40px;
+	margin-bottom: 10px;
+	background: #333;
+	color: white;
+	border: none;
+	border-radius: 8px;
+}

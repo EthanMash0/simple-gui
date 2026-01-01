@@ -29,12 +29,12 @@
       "-I/usr/include/sysprof-6",
       "-pthread",
       "-o",
-      "app-dock-hyprland",
+      "simple-gui",
       "src/main.c"
     ],
-    "directory": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland",
-    "file": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland/src/main.c",
-    "output": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland/app-dock-hyprland"
+    "directory": "/home/ethanmash/Dropbox/Personal/simple-gui",
+    "file": "/home/ethanmash/Dropbox/Personal/simple-gui/src/main.c",
+    "output": "/home/ethanmash/Dropbox/Personal/simple-gui/simple-gui"
   },
   {
     "arguments": [
@@ -66,12 +66,12 @@
       "-I/usr/include/sysprof-6",
       "-pthread",
       "-o",
-      "app-dock-hyprland",
+      "simple-gui",
       "src/config.c"
     ],
-    "directory": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland",
-    "file": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland/src/config.c",
-    "output": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland/app-dock-hyprland"
+    "directory": "/home/ethanmash/Dropbox/Personal/simple-gui",
+    "file": "/home/ethanmash/Dropbox/Personal/simple-gui/src/config.c",
+    "output": "/home/ethanmash/Dropbox/Personal/simple-gui/simple-gui"
   },
   {
     "arguments": [
@@ -103,11 +103,11 @@
       "-I/usr/include/sysprof-6",
       "-pthread",
       "-o",
-      "app-dock-hyprland",
+      "simple-gui",
       "src/hypr.c"
     ],
-    "directory": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland",
-    "file": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland/src/hypr.c",
-    "output": "/home/ethanmash/Dropbox/Personal/app-dock-hyprland/app-dock-hyprland"
+    "directory": "/home/ethanmash/Dropbox/Personal/simple-gui",
+    "file": "/home/ethanmash/Dropbox/Personal/simple-gui/src/hypr.c",
+    "output": "/home/ethanmash/Dropbox/Personal/simple-gui/simple-gui"
   }
 ]

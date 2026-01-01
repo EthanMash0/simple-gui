@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=simple-gui
+Exec=simple-gui
+Icon=simple-gui
+Terminal=false
+Categories=Utility;

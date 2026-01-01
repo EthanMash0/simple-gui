@@ -23,14 +23,14 @@ static gchar** split_csv_trim(const gchar *s) {
 
 static gchar* dock_user_config_path(const char *name) {
 	const char *xdg = g_get_user_config_dir();
-	return g_build_filename(xdg, "app-dock-hyprland", name, NULL);
+	return g_build_filename(xdg, "simple-gui", name, NULL);
 }
 
 gchar* dock_find_config_path(const char *name) {
     gchar *user = dock_user_config_path(name);
     if (g_file_test(user, G_FILE_TEST_EXISTS)) return user;
 
-    gchar *sys = g_build_filename("/usr/share/app-dock-hyprland", name, NULL);
+    gchar *sys = g_build_filename("/usr/share/simple-gui", name, NULL);
     if (g_file_test(sys, G_FILE_TEST_EXISTS)) {
         g_free(user);
         return sys;

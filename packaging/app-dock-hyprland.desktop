@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=app-dock-hyprland
-Exec=app-dock-hyprland
-Icon=app-dock-hyprland
-Terminal=false
-Categories=Utility;

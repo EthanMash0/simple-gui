@@ -1,15 +1,15 @@
-pkgname=app-dock-hyprland-git
-pkgver=2471d57
+pkgname=simple-gui-git
+pkgver=fd35a36
 pkgrel=1
 pkgdesc="Bottom dock for Hyprland (GTK4 layer-shell)"
 arch=(x86_64)
-url="https://github.com/EthanMash0/app-dock-hyprland.git"
+url="https://github.com/EthanMash0/simple-gui.git"
 depends=(gtk4 gtk4-layer-shell glib2)
 makedepends=(git gcc make pkgconf)
-provides=(app-dock-hyprland)
-conflicts=(app-dock-hyprland)
+provides=(simple-gui)
+conflicts=(simple-gui)
 
-source=("app-dock-hyprland::git+file://$startdir/../..")
+source=("simple-gui::git+file://$startdir/../..")
 sha256sums=('SKIP')
 
 pkgver() {

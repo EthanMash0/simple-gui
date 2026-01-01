@@ -13,6 +13,6 @@ compile_commands.json
 .vscode/
 
 # Arch packaging outputs (common makepkg artifacts)
-app-dock-hyprland/
-src/
+simple-gui/
+pkg/
 *.pkg.tar.*
